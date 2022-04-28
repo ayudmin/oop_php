@@ -1,2 +1,2 @@
-# OOP_php
+# OOP_PHP
 object oriented principles in php
