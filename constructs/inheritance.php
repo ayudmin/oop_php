@@ -1,33 +1,66 @@
 <?php
 
-class CoffeeMaker
+class Collection 
 
 {
 
-    public function brew()
+    protected array $items;
+
+    public function __construct(array $items)
 
     {
-        var_dump('brews coffee');
 
+        $this->items = $items;
     }
 
+    public function sum($key)
+
+    {
+
+        return array_sum(array_column($this->items, $key));
+    }
 }
 
 
-class SpecialityCoffeeMaker extends CoffeeMaker
+class VideosCollection extends Collection
 
 {
 
-    public function brewLatte()
+    public function length()
 
     {
-        var_dump('brews latte');
 
+        return $this->sum('length');
     }
 }
 
-(new CoffeeMaker())->brew();
 
-(new SpecialityCoffeeMaker())->brewLatte();
+class Video
 
-(new SpecialityCoffeeMaker())->brew();
+{
+
+    public $title;
+
+    public $length;
+
+    public function __construct($title, $length)
+
+    {
+
+        $this->title = $title;
+
+        $this->length = $length;
+    }
+}
+
+$videos = new VideosCollection([
+
+    new Video('Some Video', 100),
+
+    new Video('Some Video', 200),
+
+    new Video('Some Video', 300)
+]);
+
+
+echo $videos->sum('length');
