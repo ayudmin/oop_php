@@ -1,66 +1,43 @@
 <?php
 
-class Collection 
+
+class AchievementType
 
 {
 
-    protected array $items;
-
-    public function __construct(array $items)
+    public function name()
 
     {
 
-        $this->items = $items;
     }
 
-    public function sum($key)
+    public function difficulty()
 
     {
 
-        return array_sum(array_column($this->items, $key));
+
     }
+
+    public function icon()
+
+    {
+
+
+    }
+
+
 }
 
 
-class VideosCollection extends Collection
+class FirstThousandPoints extends AchievementType
 
 {
 
-    public function length()
+
+    public function qualifier()
 
     {
 
-        return $this->sum('length');
+
     }
 }
-
-
-class Video
-
-{
-
-    public $title;
-
-    public $length;
-
-    public function __construct($title, $length)
-
-    {
-
-        $this->title = $title;
-
-        $this->length = $length;
-    }
-}
-
-$videos = new VideosCollection([
-
-    new Video('Some Video', 100),
-
-    new Video('Some Video', 200),
-
-    new Video('Some Video', 300)
-]);
-
-
-echo $videos->sum('length');
