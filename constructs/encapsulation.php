@@ -1,36 +1,21 @@
 <?php
 
 
-class Person
+class TennisMatchClass
 
 {
-
-    public $name;
-
-    public function __contruct($name)
-    {
-        $this->name = $name;
-    }
-
-    public function job()
-    {
-        return 'software developer';
-    }
-
-    public function favoriteTeam()
+    public function score()
     {
 
     }
 
-    private function privateThings()
+    protected function hasWinner()
     {
-        return 'private info';
+
+    }
+
+    protected function hasAdvantage()
+    {
+        
     }
 }
-
-$method = new \ReflectionMethod(Person::class, 'privateThings');
-$method->setAccessible(true);
-$bob = new Person('Bob');
-
-$info = $method->invoke($bob);
-var_dump($info);
