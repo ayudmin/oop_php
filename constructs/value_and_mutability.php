@@ -18,7 +18,7 @@ class Age
 
 	public function increament()
 	{
-		$this->age += 1;
+		return new self($this->age + 1);
 	}
 
 	public function get()
