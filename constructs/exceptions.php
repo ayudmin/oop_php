@@ -2,21 +2,44 @@
 
 
 
-function add($one, $two)
+class Video
 {
 
-    if (! is_float($one) || ! is_float($two)){
 
-        throw new Exception('Please provide a float');
+}
+
+class User
+
+{
+
+    public function download(Video $video)
+    {
+        if (! $this->subscribed()){
+            throw new Exception('You must be subscribed.');
+        }
+
+
     }
-    return $one + $two;
+
+    public function subscribed()
+    {
+        return false;  
+
+    }
 }
 
 
-try {
+class UserDownloadController
 
-    echo add(1, []);
-} catch (Exception $e){
+{
+    public function show()
+    {
+        try {
 
-    echo 'oh well';
+            (new User)->download(new Video);
+        } catch {
+
+            echo 'Video download not allowed';
+        }
+    }
 }
